@@ -1,4 +1,4 @@
-wvRobot
+wvSobot
 =======
 
-WatorVapor Robot
+WatorVapor Social Bot
