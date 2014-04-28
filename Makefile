@@ -9,7 +9,7 @@ mount:
 
 apache2:
 	sudo cp -rf ./apache2/sites-available/* /etc/apache2/sites-available/
-	cd /etc/apache2/sites-enabled && sudo ln -sf ../sites-available/001-default.conf 001-default.conf
+	cd /etc/apache2/sites-enabled && sudo ln -sf ../sites-available/002-default.conf 002-default.conf
 	sudo cp -f ./apache2/php5/apache2/php.ini /etc/php5/apache2/
 	sudo a2enmod rewrite 
 	sudo service apache2 restart
