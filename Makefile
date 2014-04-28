@@ -3,9 +3,9 @@
 all:mount
 debug:
 mount:
-	mkdir -p ./helpbook/app/tmp/
-	sudo mount tmpfs ./helpbook/app/tmp/ -t tmpfs -o size=128m
-	sudo chown www-data -R ./helpbook/app/tmp/
+	mkdir -p ./sobot/app/tmp/
+	sudo mount tmpfs ./sobot/app/tmp/ -t tmpfs -o size=128m
+	sudo chown www-data -R ./sobot/app/tmp/
 
 apache2:
 	sudo cp -rf ./apache2/sites-available/* /etc/apache2/sites-available/
