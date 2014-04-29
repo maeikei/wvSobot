@@ -19,6 +19,7 @@
  */
 
 App::uses('AppController', 'Controller');
+App::uses('Account','Vendor/twitter');
 
 /**
  * Static content controller
@@ -32,12 +33,31 @@ class TwitterController extends AppController {
 
 	public $uses = array('Twitter');
 	public function index() {
-		debug($this->Twitter->find('all'));
+		///$this->set('twitter',$this->Twitter->find('all'));
+		$accVars = array();
+		foreach ($this->Twitter->find('all') as $key => $value){
+//			debug($value['Twitter']);
+//			debug($value['Twitter']['apiKey']);
+			$acc = new Account(
+				$value['Twitter']['apiKey'],
+				$value['Twitter']['apiSecret'],
+				$value['Twitter']['accessToken'],
+				$value['Twitter']['accessTokenSecret']
+			);
+			$arr = array(5 => 1, 12 => 2);
+			array_push($accVars, array('name' => $acc->getName(),
+										'screenName' => $acc->getScreenName(),
+										'icon' => $acc->getIcon()
+										));
+		}
+		//debug($accVars);
+		$this->set('twitter',$accVars);
 	}
 	public function oauth() {
-		debug($this->Twitter->find('all'));
+		//debug($this->Twitter->find('all'));
 		if($this->request->isPost() || $this->request->isPut()) {
-			debug($this->data['apiKeys']);
+			$saveInModel = $this->Twitter->find('first', 
+				array('conditions' => array('Twitter.apiKey' => $this->data['apiKeys']['apiKey'])));
 			$data = array('Twitter' =>array(
 									'apiKey' => $this->data['apiKeys']['apiKey'],
 									'apiSecret' => $this->data['apiKeys']['apiSecret'],
@@ -46,7 +66,10 @@ class TwitterController extends AppController {
 								)
 						);
 			debug($data);
-			$this->Twitter->save($data);
+			debug($saveInModel);
+			if(empty($saveInModel)) {
+				$this->Twitter->save($data);
+			}
 			$this->redirect(array('controller' => 'twitter', 'action' => 'index','?' =>array('uuid'=>'')));
 		}
 	}
