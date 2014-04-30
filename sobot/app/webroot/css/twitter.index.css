@@ -17,10 +17,11 @@
 	overflow:auto;
 /*	border: 1px solid #ff0000;*/
 	border: 2px groove green;
-	text-align:center;
 }
 .account_list {
 	overflow:auto;
+	float:left;
+	text-align:center;
 }
 
 .account_name {

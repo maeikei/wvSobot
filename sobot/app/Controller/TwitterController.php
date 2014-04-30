@@ -44,11 +44,12 @@ class TwitterController extends AppController {
 				$value['Twitter']['accessToken'],
 				$value['Twitter']['accessTokenSecret']
 			);
-			$arr = array(5 => 1, 12 => 2);
-			array_push($accVars, array('name' => $acc->getName(),
-										'screenName' => $acc->getScreenName(),
-										'icon' => $acc->getIcon()
-										));
+			if( $acc->isOK() ) {
+				array_push($accVars, array('name' => $acc->getName(),
+											'screenName' => $acc->getScreenName(),
+											'icon' => $acc->getIcon()
+											));
+			}
 		}
 		//debug($accVars);
 		$this->set('twitter',$accVars);
@@ -74,7 +75,12 @@ class TwitterController extends AppController {
 			debug($data);
 			debug($saveInModel);
 			if(empty($saveInModel)) {
-				$this->Twitter->save($data);
+				if($this->Twitter->validates($data)) {
+					$this->Twitter->save($data);
+				}
+				else {
+					$errors = $this->Twitter->validationErrors;
+				}
 			}
 			$this->redirect(array('controller' => 'twitter', 'action' => 'index','?' =>array('uuid'=>'')));
 		}

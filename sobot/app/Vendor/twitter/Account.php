@@ -29,14 +29,28 @@
 			$this->jset = json_decode($this->resJson, true);
 			//debug($this->jset);
 		}
+		public function isOK(){
+			if(isset($this->jset['errors'])) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
 		public function getName(){
-			return $this->jset['name'];
+			if(isset($this->jset['name'])) {
+				return $this->jset['name'];
+			}
 		}
 		public function getScreenName(){
-			return $this->jset['screen_name'];
+			if(isset($this->jset['screen_name'])) {
+				return $this->jset['screen_name'];
+			}
 		}
 		public function getIcon(){
-			return $this->jset['profile_image_url'];
+			if(isset($this->jset['profile_image_url'])) {
+				return $this->jset['profile_image_url'];
+			}
 		}
 	}
 ?>
