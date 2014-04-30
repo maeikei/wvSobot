@@ -73,4 +73,9 @@ class TwitterController extends AppController {
 			$this->redirect(array('controller' => 'twitter', 'action' => 'index','?' =>array('uuid'=>'')));
 		}
 	}
+
+	public function addBot() {
+	}
+
+
 }
