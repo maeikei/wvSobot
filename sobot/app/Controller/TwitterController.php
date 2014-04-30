@@ -57,7 +57,13 @@ class TwitterController extends AppController {
 		//debug($this->Twitter->find('all'));
 		if($this->request->isPost() || $this->request->isPut()) {
 			$saveInModel = $this->Twitter->find('first', 
-				array('conditions' => array('Twitter.apiKey' => $this->data['apiKeys']['apiKey'])));
+				array('conditions' => array('Twitter.apiKey' => $this->data['apiKeys']['apiKey'],
+								'Twitter.apiSecret' => $this->data['apiKeys']['apiSecret'],
+								'Twitter.accessToken' => $this->data['apiKeys']['accessToken'],
+								'Twitter.accessTokenSecret' => $this->data['apiKeys']['accessTokenSecret']
+							)
+					)
+				);
 			$data = array('Twitter' =>array(
 									'apiKey' => $this->data['apiKeys']['apiKey'],
 									'apiSecret' => $this->data['apiKeys']['apiSecret'],
