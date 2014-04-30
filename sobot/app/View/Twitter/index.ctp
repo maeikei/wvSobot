@@ -15,18 +15,16 @@
 
 
 <div id="account">
-<?php
-//	debug($twitter);
-	foreach ($twitter as $key => $value){
-//		debug($key);
-		echo '<div class="account_list">';
-			echo '<div class="account_name">';
-				echo($value['name']);
-			echo '</div>';
-			echo $this->Html->image($value['icon'],array('class'=>'twitter_icon'));
-		echo '</div>';
-	}
-?>
+	<?php foreach ($twitter as $key => $value): ?>
+		<div class="account_list">
+			<div class="account_name">
+				<?php echo($value['name']); ?>
+			</div>
+			<?php 
+				echo $this->Html->image($value['icon'],array('class'=>'twitter_icon'));
+			?>
+		</div>
+	<?php endforeach; ?>
 </div>
 
 <!--div class="bot_icon">
