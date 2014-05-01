@@ -82,7 +82,8 @@ class TwitterController extends AppController {
 					$errors = $this->Twitter->validationErrors;
 				}
 			}
-			$this->redirect(array('controller' => 'twitter', 'action' => 'index','?' =>array('uuid'=>'')));
+//			$this->redirect(array('controller' => 'twitter', 'action' => 'index','?' =>array('uuid'=>'')));
+			$this->redirect(array('controller' => 'twitter', 'action' => 'index'));
 		}
 	}
 
