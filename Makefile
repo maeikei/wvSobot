@@ -4,7 +4,7 @@ all:mount
 debug:
 mount:
 	mkdir -p ./sobot/app/tmp/
-	sudo mount tmpfs ./sobot/app/tmp/ -t tmpfs -o size=128m
+	sudo mount tmpfs ./sobot/app/tmp/ -t tmpfs -o size=32m
 	sudo chown www-data -R ./sobot/app/tmp/
 
 apache2:
