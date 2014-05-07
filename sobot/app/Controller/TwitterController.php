@@ -30,9 +30,9 @@ App::uses('Account','Vendor/twitter');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class TwitterController extends AppController {
-
 	public $uses = array('Twitter');
-	public function index() {
+
+	private function getAccout() {
 		///$this->set('twitter',$this->Twitter->find('all'));
 		$accVars = array();
 		foreach ($this->Twitter->find('all') as $key => $value){
@@ -53,6 +53,12 @@ class TwitterController extends AppController {
 		}
 		//debug($accVars);
 		$this->set('twitter',$accVars);
+		return $accVars;
+	}
+
+
+	public function index() {
+		$this->getAccout();
 	}
 	public function oauth() {
 		//debug($this->Twitter->find('all'));
@@ -88,9 +94,23 @@ class TwitterController extends AppController {
 	}
 
 	public function addBot() {
+		$this->getAccout();
 	}
 	
 	public function report() {
+		$accVars = $this->getAccout();
+		$twitter_name = array();
+		$a = 0;
+		foreach ($accVars as &$value) {
+			$a++;
+			$name_t ='check' . (string)$a;
+			$twitter_name[$name_t] = $value['name'];
+		}
+		$this->set('twitter_name',$twitter_name);
+//		debug($twitter_name);
+		if($this->request->isPost() || $this->request->isPut()) {
+			debug($this->data['task']);
+		}
 
 	}
 
