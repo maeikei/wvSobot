@@ -89,6 +89,9 @@ class TwitterController extends AppController {
 
 	public function addBot() {
 	}
+	
+	public function report() {
 
+	}
 
 }
