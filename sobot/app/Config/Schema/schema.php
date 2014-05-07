@@ -31,6 +31,19 @@ class AppSchema extends CakeSchema {
 		'tableParameters' => array()
 	);
 
+	public $twitterTask = array(
+		'id' => array('type' => 'integer', 'null' => false, 'length' => 11, 'key' => 'primary'),
+		'keywords' => array('type' => 'text', 'null' => false),
+		'twitters' => array('type' => 'text', 'null' => false),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => 'CURRENT_TIMESTAMP'),
+		'modified' => array('type' => 'datetime', 'null' => false, 'default' => 'CURRENT_TIMESTAMP'),
+		'indexes' => array(
+			
+		),
+		'tableParameters' => array()
+	);
+	
+	
 	public $users = array(
 		'id' => array('type' => 'integer', 'null' => false, 'length' => 11, 'key' => 'primary'),
 		'username' => array('type' => 'string', 'null' => false),
