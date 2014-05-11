@@ -29,7 +29,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('sobot.generic');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,7 +39,51 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<div class="add_task">
+				<?php 
+					echo $this->Html->link(
+						$this->Html->image('bot.icon',array('class'=>'compIconBig')),
+						array('controller' => 'addBot', 'action' => 'index'),
+						array('escape' => false)
+					);
+					echo $this->Html->image('add.icon',array('class'=>'compIconSmall'));
+				?>
+			</div>
+
+			<div class="add_account">
+				<?php 
+					echo $this->Html->link(
+						$this->Html->image('twitter.api.icon',array('class'=>'compIconBig')),
+						array('controller' => 'twitter', 'action' => 'oauth'),
+						array('escape' => false)
+					);
+					echo $this->Html->image('add2.icon',array('class'=>'compIconSmall'));
+					echo $this->Html->image('oauth2.0.icon',array('class'=>'compIconSmall2'));
+				?>
+			</div>
+			<div class="add_account">
+				<?php 
+					echo $this->Html->link(
+						$this->Html->image('facebook.api.icon',array('class'=>'compIconBig')),
+						array('controller' => 'facebook', 'action' => 'oauth'),
+						array('escape' => false)
+					);
+					echo $this->Html->image('add2.icon',array('class'=>'compIconSmall'));
+					echo $this->Html->image('oauth2.0.icon',array('class'=>'compIconSmall2'));
+				?>
+			</div>
+			<div class="add_account">
+				<?php 
+					echo $this->Html->link(
+						$this->Html->image('google+.api.icon',array('class'=>'compIconBig')),
+						array('controller' => 'googleplus', 'action' => 'oauth'),
+						array('escape' => false)
+					);
+					echo $this->Html->image('add2.icon',array('class'=>'compIconSmall'));
+					echo $this->Html->image('oauth2.0.icon',array('class'=>'compIconSmall2'));
+				?>
+			</div>
+			
 		</div>
 		<div id="content">
 
