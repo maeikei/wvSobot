@@ -19,6 +19,7 @@ class AppSchema extends CakeSchema {
 
 	public $twitterOAuth = array(
 		'id' => array('type' => 'integer', 'null' => false, 'length' => 11, 'key' => 'primary'),
+		'sha1' => array('type' => 'text', 'null' => false),
 		'apiKey' => array('type' => 'text', 'null' => false),
 		'apiSecret' => array('type' => 'text', 'null' => false),
 		'accessToken' => array('type' => 'text', 'null' => false),

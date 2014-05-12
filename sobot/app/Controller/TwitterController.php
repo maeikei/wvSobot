@@ -71,7 +71,9 @@ class TwitterController extends AppController {
 							)
 					)
 				);
+			$sha1 = sha1(implode(",", $this->data['apiKeys']));
 			$data = array('Twitter' =>array(
+									'sha1' => $sha1,
 									'apiKey' => $this->data['apiKeys']['apiKey'],
 									'apiSecret' => $this->data['apiKeys']['apiSecret'],
 									'accessToken' => $this->data['apiKeys']['accessToken'],

@@ -35,8 +35,9 @@ class AddBotController extends AppController {
 	private function getAccout() {
 		///$this->set('twitter',$this->Twitter->find('all'));
 		$accVars = array();
+		$accRet = array();
 		foreach ($this->Twitter->find('all') as $key => $value){
-//			debug($value['Twitter']);
+//			debug($value);
 //			debug($value['Twitter']['apiKey']);
 			$acc = new Account(
 				$value['Twitter']['apiKey'],
@@ -49,11 +50,17 @@ class AddBotController extends AppController {
 											'screenName' => $acc->getScreenName(),
 											'icon' => $acc->getIcon()
 											));
+				array_push($accRet, array('name' => $acc->getName(),
+											'screenName' => $acc->getScreenName(),
+											'icon' => $acc->getIcon(),
+											'sha1' => $value['Twitter']['sha1']
+											));
 			}
 		}
 		//debug($accVars);
 		$this->set('twitter',$accVars);
-		return $accVars;
+//		debug($accRet);
+		return $accRet;
 	}
 
 
@@ -61,24 +68,18 @@ class AddBotController extends AppController {
 		$this->getAccout();
 	}
 
-
-	public function addBot() {
-		$this->getAccout();
-	}
-	
 	public function report() {
 		$accVars = $this->getAccout();
 		$twitter_name = array();
-		$a = 0;
 		foreach ($accVars as &$value) {
-			$a++;
-			$name_t ='check' . (string)$a;
+			$name_t =$value['sha1'];
 			$twitter_name[$name_t] = $value['name'];
 		}
 		$this->set('twitter_name',$twitter_name);
-//		debug($twitter_name);
+		debug($twitter_name);
 		if($this->request->isPost() || $this->request->isPut()) {
-			debug($this->data['task']);
+			debug($this->data);
+//			debug($this->data);
 		}
 
 	}
