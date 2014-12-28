@@ -1,4 +1,4 @@
-.PHONY : all debug mount apache2
+.PHONY : all debug mount apache2 train
 #mount tmpfs /tmp -t tmpfs -o size=64m
 all:mount
 debug:
@@ -14,3 +14,6 @@ apache2:
 	sudo a2enmod rewrite 
 	sudo service apache2 restart
 	sudo apt-get install php5-pgsql php5-cli
+
+train:
+	make -C train
