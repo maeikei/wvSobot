@@ -1,5 +1,7 @@
-#!/bin/bash
-
-wget -O robot.xml "http://ja.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=xml&titles=ロボット"
+#!/usr/bin/ruby
+$WIKIAPI_URL = "http://ja.wikipedia.org/w/api.php?"
+$FETCH_PARAM = "action=query&prop=revisions&rvprop=content&format=xml"
+title = "ロボット"
+p `wget -O - "#{$WIKIAPI_URL}#{$FETCH_PARAM}&titles=#{title}`
 
 
