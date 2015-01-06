@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
-$WIKIAPI_URL = "http://ja.wikipedia.org/w/api.php?"
-$FETCH_PARAM = "action=query&prop=revisions&rvprop=content&format=xml"
+WIKIAPI_URL = "http://ja.wikipedia.org/w/api.php?"
+FETCH_PARAM = "action=query&prop=revisions&rvprop=content&format=xml"
 title = "ロボット"
-p `wget -O - "#{$WIKIAPI_URL}#{$FETCH_PARAM}&titles=#{title}`
+p `wget -O - "#{WIKIAPI_URL}#{FETCH_PARAM}&titles=#{title}`
 
 
